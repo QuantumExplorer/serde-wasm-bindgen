@@ -220,6 +220,7 @@ pub struct Serializer {
     serialize_maps_as_objects: bool,
     serialize_large_number_types_as_bigints: bool,
     serialize_bytes_as_arrays: bool,
+    serialize_human_readable: bool,
 }
 
 impl Serializer {
@@ -230,6 +231,7 @@ impl Serializer {
             serialize_maps_as_objects: false,
             serialize_large_number_types_as_bigints: false,
             serialize_bytes_as_arrays: false,
+            serialize_human_readable: false,
         }
     }
 
@@ -243,6 +245,7 @@ impl Serializer {
             serialize_maps_as_objects: true,
             serialize_large_number_types_as_bigints: false,
             serialize_bytes_as_arrays: true,
+            serialize_human_readable: false,
         }
     }
 
@@ -475,6 +478,6 @@ impl<'s> ser::Serializer for &'s Serializer {
     }
 
     fn is_human_readable(&self) -> bool {
-        false
+        self.serialize_human_readable
     }
 }
