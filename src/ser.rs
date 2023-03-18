@@ -473,4 +473,8 @@ impl<'s> ser::Serializer for &'s Serializer {
             self.serialize_struct(variant, len)?,
         ))
     }
+
+    fn is_human_readable(&self) -> bool {
+        false
+    }
 }
